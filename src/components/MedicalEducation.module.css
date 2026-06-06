@@ -1,0 +1,143 @@
+.hcp {
+  padding: var(--section-gap) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hcpGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+@media (max-width: 1000px) { .hcpGrid { grid-template-columns: 1fr; gap: 3rem; } }
+
+.sectionNum {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.headline {
+  font-size: clamp(1.75rem, 3vw, 3.25rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.hcpMain p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 52ch;
+  margin-bottom: 1rem;
+}
+
+.hcpAside {
+  border: 1px solid var(--hairline);
+  padding: 2.5rem;
+  background: var(--off-white);
+}
+
+.asideLabel {
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.hcpList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hcpList li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  color: var(--charcoal);
+  line-height: 1.6;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.hcpList li:last-child { border-bottom: 0; }
+
+.bullet {
+  color: var(--ink);
+  font-size: 0.5rem;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.disclaimer {
+  margin-top: 1.5rem;
+  font-size: 0.6875rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Modal */
+.modalBg {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--white);
+  max-width: 540px;
+  width: 90%;
+  padding: 3rem;
+  border-top: 2px solid var(--ink);
+}
+
+.modal h4 {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.modal h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+
+.modal p {
+  font-size: 0.875rem;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hairline);
+}

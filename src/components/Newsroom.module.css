@@ -1,0 +1,101 @@
+.newsroom {
+  padding: var(--section-gap) 0;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: clamp(48px, 6vw, 80px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+@media (max-width: 900px) { .header { grid-template-columns: 1fr; gap: 2rem; } }
+
+.sectionNum {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.headline {
+  font-size: clamp(1.75rem, 3vw, 3.25rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.headerRight p {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 58ch;
+}
+
+.articles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) { .articles { grid-template-columns: 1fr; } }
+
+.article {
+  padding: 0 2.5rem 0 0;
+  border-right: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background var(--t-fast) ease;
+}
+
+.article:first-child { padding-left: 0; }
+.article:last-child { border-right: 0; padding-right: 0; }
+
+@media (max-width: 900px) {
+  .article { padding: 2rem 0; border-right: none; border-bottom: 1px solid var(--hairline); }
+  .article:last-child { border-bottom: 0; }
+}
+
+.meta {
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.article h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+}
+
+.article p {
+  font-size: 0.8125rem;
+  color: var(--mid);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.article a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: auto;
+  transition: gap var(--t-fast) ease;
+}
+.article a:hover { gap: 0.625rem; }

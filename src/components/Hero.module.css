@@ -1,0 +1,94 @@
+.hero {
+  padding: clamp(28px, 3vw, 48px) 0 clamp(40px, 5vw, 72px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.heroTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: clamp(16px, 2vw, 28px);
+}
+
+.heroLabel {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.heroCounter {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.heroHeadline {
+  font-size: clamp(3.5rem, 7vw, 9rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 0.93;
+  color: var(--ink);
+  max-width: 16ch;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: end;
+  border-top: 1px solid var(--hairline);
+  padding-top: 1.75rem;
+}
+
+@media (max-width: 900px) {
+  .heroGrid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.heroCopy p {
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--charcoal);
+  max-width: 52ch;
+  margin-bottom: 2rem;
+}
+
+.heroActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.heroSide {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.kv {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline-light);
+}
+
+.kvLast { border-bottom: 0; }
+
+.kv span {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.kv b {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: right;
+  max-width: 55%;
+}
