@@ -1,9 +1,11 @@
 import styles from './Hero.module.css';
+import ParticleCanvas from './ParticleCanvas';
 
 export default function Hero() {
   return (
     <section className={styles.hero}>
-      <div className="wrap">
+      <ParticleCanvas />
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.heroTop}>
           <span className={styles.heroLabel}>Swiss specialty pharma — Zug, Switzerland</span>
           <span className={styles.heroCounter}>01 — 07</span>
@@ -37,3 +39,4 @@ export default function Hero() {
     </section>
   );
 }
+

@@ -1,4 +1,6 @@
 .hero {
+  position: relative;
+  overflow: hidden;
   padding: clamp(28px, 3vw, 48px) 0 clamp(40px, 5vw, 72px);
   border-bottom: 1px solid var(--hairline);
 }
