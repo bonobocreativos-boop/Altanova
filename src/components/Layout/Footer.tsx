@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -7,7 +8,13 @@ export default function Footer() {
         <div className={styles.footGrid}>
           <div className={styles.footBrand}>
             <a href="#" aria-label="Altanova Pharma">
-              <span className={styles.brandName}>Altanova<span className={styles.brandSuffix}>Pharma Group AG</span></span>
+              <Image
+                src="/Altanova-logo-white.png"
+                alt="Altanova Pharma Group AG"
+                width={160}
+                height={28}
+                className={styles.logoImg}
+              />
             </a>
             <p className={styles.brandTagline}>
               Swiss Precision<span className={styles.dot}>·</span>Scientific Integrity<span className={styles.dot}>·</span>Patient Impact

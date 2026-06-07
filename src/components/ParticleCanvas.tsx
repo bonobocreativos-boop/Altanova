@@ -75,8 +75,11 @@ export default function ParticleCanvas() {
       for (let r = 0; r < rows; r++) {
         points[r] = [];
         for (let c = 0; c < cols; c++) {
-          // Normalize coordinates
-          const nx = c / (cols - 1);
+          // Normalize coordinates with hexagonal offset
+          // Alternate rows are offset by half-step
+          const isOddRow = r % 2 === 1;
+          const shift = isOddRow ? 0.5 : 0;
+          const nx = (c + shift) / (cols - 0.5);
           const ny = r / (rows - 1);
 
           // Base 3D coordinate (plane tilted in perspective)
@@ -142,7 +145,7 @@ export default function ParticleCanvas() {
 
           // Color: Slate/Ice grey to match Swiss lab clean look
           // Very transparent so it sits behind text elegantly
-          ctx.strokeStyle = `rgba(180, 190, 200, ${0.09 * alphaScale})`;
+          ctx.strokeStyle = `rgba(228, 230, 234, ${0.45 * alphaScale})`;
 
           // Horizontal connections
           if (c < cols - 1) {
@@ -153,19 +156,46 @@ export default function ParticleCanvas() {
             ctx.stroke();
           }
 
-          // Vertical connections
+          // Diagonal connections for hexagonal grid layout
           if (r < rows - 1) {
-            const nextP = points[r + 1][c];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(nextP.x, nextP.y);
-            ctx.stroke();
+            if (r % 2 === 0) {
+              // Even rows connect to index c and c - 1 on odd rows
+              const nextP1 = points[r + 1][c];
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(nextP1.x, nextP1.y);
+              ctx.stroke();
+
+              if (c > 0) {
+                const nextP2 = points[r + 1][c - 1];
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(nextP2.x, nextP2.y);
+                ctx.stroke();
+              }
+            } else {
+              // Odd rows connect to index c and c + 1 on even rows
+              const nextP1 = points[r + 1][c];
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(nextP1.x, nextP1.y);
+              ctx.stroke();
+
+              if (c < cols - 1) {
+                const nextP2 = points[r + 1][c + 1];
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(nextP2.x, nextP2.y);
+                ctx.stroke();
+              }
+            }
           }
 
           // Draw node particle points (subtle dots)
-          ctx.fillStyle = `rgba(120, 130, 140, ${0.18 * alphaScale})`;
+          ctx.fillStyle = `rgba(228, 230, 234, ${0.7 * alphaScale})`;
           ctx.beginPath();
-          ctx.arc(p.x, p.y, 1.2 * p.scale, 0, Math.PI * 2);
+          const particleSize = width < 768 ? 1.3 : 2.0;
+          ctx.arc(p.x, p.y, particleSize * p.scale, 0, Math.PI * 2);
           ctx.fill();
         }
       }

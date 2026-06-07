@@ -49,7 +49,7 @@
 @media (max-width: 560px)  { .cards { grid-template-columns: 1fr; } }
 
 .card {
-  padding: 2.5rem 2rem 2.5rem 0;
+  padding: 2.5rem 2rem;
   border-right: 1px solid var(--hairline);
   display: flex;
   flex-direction: column;

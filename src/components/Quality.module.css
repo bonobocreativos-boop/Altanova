@@ -47,7 +47,7 @@
 @media (max-width: 900px) { .blocks { grid-template-columns: 1fr; } }
 
 .block {
-  padding: 0 3rem 0 0;
+  padding: 0 2rem;
   border-right: 1px solid var(--hairline);
   display: flex;
   flex-direction: column;

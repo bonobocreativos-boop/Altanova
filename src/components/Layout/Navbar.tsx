@@ -54,10 +54,10 @@ export default function Navbar() {
         <div className={`wrap ${styles.navWrap}`}>
           <a href="#" aria-label="Altanova Pharma">
             <Image
-              src="/Altanova-logo-01.png"
+              src="/Altanova-logo-black.png"
               alt="Altanova Pharma Group AG"
-              width={160}
-              height={28}
+              width={224}
+              height={39}
               className={styles.logoImg}
               priority
             />

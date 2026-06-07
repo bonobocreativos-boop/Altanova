@@ -1,5 +1,5 @@
 .utility {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--hairline-light);
@@ -81,7 +81,7 @@
 
 /* ---- Primary nav — glass bar ---- */
 .nav {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--glass-border-dim);
@@ -99,7 +99,7 @@
 }
 
 .nav.scrolled {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 1px 0 rgba(255,255,255,0.8), 0 4px 32px rgba(140,160,180,0.15);
 }
 
@@ -112,7 +112,7 @@
 
 /* Logo image */
 .logoImg {
-  height: 22px;
+  height: 31px;
   width: auto;
   display: block;
 }
