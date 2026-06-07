@@ -9,13 +9,69 @@ export default function ParticleCanvas() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animationId: number;
     let width = 0;
     let height = 0;
+
+    // --- Static vertex + edge structures (rebuilt on resize) ---
+    type StaticVertex = { staticX: number; staticY: number };
+    let vertexList: StaticVertex[] = [];   // index = vertex id
+    let edgeList: [number, number][] = []; // pairs of vertex ids (unique)
+
+    const hexSize = 52;
+    const hexW = Math.sqrt(3) * hexSize;  // pointy-top width
+    const rowStep = hexSize * 1.5;        // vertical step between row centers
+    const vertexAngles = Array.from({ length: 6 }, (_, i) => (Math.PI / 180) * (60 * i - 30));
+
+    const buildGrid = () => {
+      vertexList = [];
+      edgeList = [];
+
+      const cols = Math.ceil(width / hexW) + 3;
+      const rows = Math.ceil(height / rowStep) + 3;
+
+      // Map: "rounded_x,rounded_y" → vertex index
+      const posToId = new Map<string, number>();
+      const edgeSet = new Set<string>();
+
+      const getOrAddVertex = (svx: number, svy: number): number => {
+        const key = `${Math.round(svx * 10)},${Math.round(svy * 10)}`;
+        if (!posToId.has(key)) {
+          posToId.set(key, vertexList.length);
+          vertexList.push({ staticX: svx, staticY: svy });
+        }
+        return posToId.get(key)!;
+      };
+
+      for (let row = -1; row < rows; row++) {
+        for (let col = -1; col < cols; col++) {
+          // Hex center — offset odd rows by half a hex width
+          const cx = col * hexW + (row % 2 === 1 ? hexW * 0.5 : 0);
+          const cy = row * rowStep;
+
+          const ids: number[] = [];
+          for (let i = 0; i < 6; i++) {
+            const svx = cx + Math.cos(vertexAngles[i]) * hexSize;
+            const svy = cy + Math.sin(vertexAngles[i]) * hexSize;
+            ids.push(getOrAddVertex(svx, svy));
+          }
+
+          // Add the 6 edges of this hexagon (deduplicated globally)
+          for (let i = 0; i < 6; i++) {
+            const a = ids[i];
+            const b = ids[(i + 1) % 6];
+            const eKey = a < b ? `${a},${b}` : `${b},${a}`;
+            if (!edgeSet.has(eKey)) {
+              edgeSet.add(eKey);
+              edgeList.push([a, b]);
+            }
+          }
+        }
+      }
+    };
 
     const resize = () => {
       const parent = canvas.parentElement;
@@ -31,6 +87,7 @@ export default function ParticleCanvas() {
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+      buildGrid();
     };
 
     resize();
@@ -43,10 +100,7 @@ export default function ParticleCanvas() {
       mouseRef.current.targetY = e.clientY - rect.top;
       mouseRef.current.active = true;
     };
-
-    const handleMouseLeave = () => {
-      mouseRef.current.active = false;
-    };
+    const handleMouseLeave = () => { mouseRef.current.active = false; };
 
     const parent = canvas.parentElement;
     if (parent) {
@@ -54,150 +108,71 @@ export default function ParticleCanvas() {
       parent.addEventListener('mouseleave', handleMouseLeave);
     }
 
-    // Grid configuration
-    const cols = 40;
-    const rows = 16;
     let time = 0;
 
-    // Animation loop
     const animate = () => {
-      time += 0.005;
+      time += 0.004;
       ctx.clearRect(0, 0, width, height);
 
-      // Smooth mouse interpolation
       const mouse = mouseRef.current;
-      mouse.x += (mouse.targetX - mouse.x) * 0.1;
-      mouse.y += (mouse.targetY - mouse.y) * 0.1;
+      mouse.x += (mouse.targetX - mouse.x) * 0.08;
+      mouse.y += (mouse.targetY - mouse.y) * 0.08;
 
-      // Project grid points
-      const points: { x: number; y: number; z: number; ox: number; oy: number; scale: number }[][] = [];
+      // Step 1: Animate each unique vertex from ITS OWN static position
+      // — this guarantees shared vertices always have one consistent animated position
+      const ax = new Float32Array(vertexList.length);
+      const ay = new Float32Array(vertexList.length);
+      const alpha = new Float32Array(vertexList.length);
 
-      for (let r = 0; r < rows; r++) {
-        points[r] = [];
-        for (let c = 0; c < cols; c++) {
-          // Normalize coordinates with hexagonal offset
-          // Alternate rows are offset by half-step
-          const isOddRow = r % 2 === 1;
-          const shift = isOddRow ? 0.5 : 0;
-          const nx = (c + shift) / (cols - 0.5);
-          const ny = r / (rows - 1);
+      for (let id = 0; id < vertexList.length; id++) {
+        const { staticX, staticY } = vertexList[id];
+        const nx = staticX / width;
+        const ny = staticY / height;
 
-          // Base 3D coordinate (plane tilted in perspective)
-          // We project a grid that spans the width and goes back in depth (Z)
-          const baseX = nx * width;
-          const baseZ = ny * 400 - 200; // Z depth
-          
-          // Anti-gravity upward wave effect
-          // y-offset has multiple sine components moving at different speeds
-          const wave1 = Math.sin(nx * 5 + time * 2) * 40;
-          const wave2 = Math.cos(ny * 4 - time * 3) * 20;
-          
-          // Upward continuous wave drift
-          const upwardDrift = -time * 80;
-          const wave3 = Math.sin((ny * 6) + nx * 3 + (upwardDrift * 0.05)) * 30;
+        // Multi-layer wave based on this vertex's own static position
+        const wave1 = Math.sin(nx * 4 + time * 1.8) * 16;
+        const wave2 = Math.cos(ny * 3 - time * 2.5) * 10;
+        const wave3 = Math.sin(nx * 2 + ny * 3 + time * 1.2) * 12;
 
-          const baseY = height * 0.5 + wave1 + wave2 + wave3 + (ny - 0.5) * (height * 0.4);
+        let vx = staticX + wave1;
+        let vy = staticY + wave2 + wave3;
 
-          // Interaction with mouse
-          let dx = baseX - mouse.x;
-          let dy = baseY - mouse.y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          let offsetX = 0;
-          let offsetY = 0;
-
-          if (mouse.active && dist < 250) {
-            const force = (1 - dist / 250) * 45;
-            offsetX = (dx / dist) * force;
-            offsetY = (dy / dist) * force;
-          }
-
-          // Simple 3D perspective projection
-          // Focus length
-          const fl = 400;
-          // Scale factor based on Z depth
-          const scale = fl / (fl + baseZ);
-
-          // Project to 2D
-          const screenX = width * 0.5 + (baseX + offsetX - width * 0.5) * scale;
-          const screenY = height * 0.4 + (baseY + offsetY - height * 0.5) * scale;
-
-          points[r][c] = {
-            x: screenX,
-            y: screenY,
-            z: baseZ,
-            ox: baseX,
-            oy: baseY,
-            scale: scale
-          };
+        // Subtle mouse repulsion
+        const dx = vx - mouse.x;
+        const dy = vy - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (mouse.active && dist < 150 && dist > 0) {
+          const force = (1 - dist / 150) * 16;
+          vx += (dx / dist) * force;
+          vy += (dy / dist) * force;
         }
+
+        ax[id] = vx;
+        ay[id] = vy;
+
+        // Depth-based alpha (top of canvas = more depth = fainter)
+        const baseZ = ny * 300 - 150;
+        alpha[id] = Math.max(0.25, (400 - baseZ) / 550);
       }
 
-      // Draw lines between mesh nodes to form the volume
-      ctx.lineWidth = 0.5;
-      
-      for (let r = 0; r < rows; r++) {
-        for (let c = 0; c < cols; c++) {
-          const p = points[r][c];
+      // Step 2: Draw all unique hex edges
+      ctx.lineWidth = 0.6;
+      for (const [a, b] of edgeList) {
+        const avgAlpha = (alpha[a] + alpha[b]) * 0.5;
+        ctx.strokeStyle = `rgba(228, 230, 234, ${0.48 * avgAlpha})`;
+        ctx.beginPath();
+        ctx.moveTo(ax[a], ay[a]);
+        ctx.lineTo(ax[b], ay[b]);
+        ctx.stroke();
+      }
 
-          // Determine line transparency based on depth (Z)
-          // Deeper points are fainter
-          const alphaScale = (400 - p.z) / 600; // 0.33 to 1.0
-
-          // Color: Slate/Ice grey to match Swiss lab clean look
-          // Very transparent so it sits behind text elegantly
-          ctx.strokeStyle = `rgba(228, 230, 234, ${0.45 * alphaScale})`;
-
-          // Horizontal connections
-          if (c < cols - 1) {
-            const nextP = points[r][c + 1];
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(nextP.x, nextP.y);
-            ctx.stroke();
-          }
-
-          // Diagonal connections for hexagonal grid layout
-          if (r < rows - 1) {
-            if (r % 2 === 0) {
-              // Even rows connect to index c and c - 1 on odd rows
-              const nextP1 = points[r + 1][c];
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(nextP1.x, nextP1.y);
-              ctx.stroke();
-
-              if (c > 0) {
-                const nextP2 = points[r + 1][c - 1];
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(nextP2.x, nextP2.y);
-                ctx.stroke();
-              }
-            } else {
-              // Odd rows connect to index c and c + 1 on even rows
-              const nextP1 = points[r + 1][c];
-              ctx.beginPath();
-              ctx.moveTo(p.x, p.y);
-              ctx.lineTo(nextP1.x, nextP1.y);
-              ctx.stroke();
-
-              if (c < cols - 1) {
-                const nextP2 = points[r + 1][c + 1];
-                ctx.beginPath();
-                ctx.moveTo(p.x, p.y);
-                ctx.lineTo(nextP2.x, nextP2.y);
-                ctx.stroke();
-              }
-            }
-          }
-
-          // Draw node particle points (subtle dots)
-          ctx.fillStyle = `rgba(228, 230, 234, ${0.7 * alphaScale})`;
-          ctx.beginPath();
-          const particleSize = width < 768 ? 1.3 : 2.0;
-          ctx.arc(p.x, p.y, particleSize * p.scale, 0, Math.PI * 2);
-          ctx.fill();
-        }
+      // Step 3: Draw particles at each unique vertex
+      const r = width < 768 ? 1.7 : 2.6;
+      for (let id = 0; id < vertexList.length; id++) {
+        ctx.fillStyle = `rgba(228, 230, 234, ${0.75 * alpha[id]})`;
+        ctx.beginPath();
+        ctx.arc(ax[id], ay[id], r, 0, Math.PI * 2);
+        ctx.fill();
       }
 
       animationId = requestAnimationFrame(animate);

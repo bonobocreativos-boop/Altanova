@@ -2,11 +2,20 @@
   position: relative;
   overflow: hidden;
   margin-top: -104px;
-  min-height: calc(100vh + 104px);
+  min-height: calc(70vh + 104px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(104px + clamp(28px, 3vw, 48px)) 0 clamp(28px, 3vw, 48px);
+  padding: calc(104px + clamp(28px, 3vw, 48px)) 0 clamp(40px, 5vw, 72px);
+  border-bottom: 1px solid var(--hairline-light);
+}
+
+@media (min-width: 901px) {
+  .hero {
+    min-height: calc(100vh + 104px);
+    padding-bottom: clamp(28px, 3vw, 48px);
+    border-bottom: none;
+  }
 }
 
 .heroInfo {
