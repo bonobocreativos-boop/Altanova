@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styles from './Footer.module.css';
+import logoWhite from '../../../public/Altanova-logo-white.png';
 
 export default function Footer() {
   return (
@@ -9,10 +10,8 @@ export default function Footer() {
           <div className={styles.footBrand}>
             <a href="#" aria-label="Altanova Pharma">
               <Image
-                src="/Altanova-logo-white.png"
+                src={logoWhite}
                 alt="Altanova Pharma Group AG"
-                width={160}
-                height={28}
                 className={styles.logoImg}
               />
             </a>

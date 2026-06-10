@@ -1,7 +1,32 @@
 .platform {
   padding: var(--section-gap) 0;
-  background: var(--off-white);
   border-bottom: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+
+  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781041568/hero-image-01_g2z0ce.png');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+/* Frosted overlay so text remains legible */
+.platform::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(242, 246, 252, 0.97) 0%,
+    rgba(235, 243, 255, 0.90) 50%,
+    rgba(220, 234, 252, 0.65) 100%
+  );
+  z-index: 0;
+}
+
+.platform > * {
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -20,9 +45,10 @@
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--blue-500);
   margin-bottom: 1.5rem;
   display: block;
+  font-weight: 500;
 }
 
 .headline {
@@ -55,11 +81,12 @@
   flex-direction: column;
   gap: 1rem;
   transition: background var(--t-fast) ease;
+  border-radius: 0;
 }
 
 .card:first-child { padding-left: 0; }
 .card:last-child { border-right: 0; padding-right: 0; }
-.card:hover { background: var(--white); }
+.card:hover { background: rgba(255, 255, 255, 0.7); }
 
 @media (max-width: 1100px) {
   .card { padding: 2rem; border-right: none; border-bottom: 1px solid var(--hairline); }
@@ -70,9 +97,9 @@
 .num {
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
-  color: var(--muted);
+  color: var(--blue-500);
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .card h3 {
@@ -93,15 +120,15 @@
 .card a {
   font-size: 0.75rem;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--blue-500);
   letter-spacing: 0.02em;
   margin-top: auto;
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  transition: gap var(--t-fast) ease;
+  transition: gap var(--t-fast) ease, color var(--t-fast) ease;
 }
-.card a:hover { gap: 0.625rem; }
+.card a:hover { gap: 0.625rem; color: var(--blue-600); }
 
 .footerNote {
   margin-top: 3rem;

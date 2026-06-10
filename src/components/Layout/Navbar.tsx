@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './Navbar.module.css';
+import logoBlack from '../../../public/Altanova-logo-black.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -54,10 +55,8 @@ export default function Navbar() {
         <div className={`wrap ${styles.navWrap}`}>
           <a href="#" aria-label="Altanova Pharma">
             <Image
-              src="/Altanova-logo-black.png"
+              src={logoBlack}
               alt="Altanova Pharma Group AG"
-              width={224}
-              height={39}
               className={styles.logoImg}
               priority
             />

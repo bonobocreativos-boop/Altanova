@@ -16,9 +16,10 @@
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--blue-500);
   margin-bottom: 1.5rem;
   display: block;
+  font-weight: 500;
 }
 
 .headline {
@@ -109,7 +110,8 @@
 .form select:focus,
 .form textarea:focus {
   outline: none;
-  border-color: var(--ink);
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
 }
 
 .full { grid-column: 1 / span 2; }

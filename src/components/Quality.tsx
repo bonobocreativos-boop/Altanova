@@ -1,9 +1,32 @@
 import styles from './Quality.module.css';
+import ParticleCanvas from './ParticleCanvas';
 
 export default function Quality() {
   return (
-    <section className={styles.quality} id="quality">
-      <div className="wrap">
+    <section className={styles.quality} id="quality" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Perspective wrapper — oversized so tilt still covers the full section */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        transformOrigin: '50% 50%',
+        transform: 'perspective(900px) rotateX(22deg) rotateY(-4deg) scale(1.7)',
+        pointerEvents: 'none',
+        zIndex: 0,
+      }}>
+        <ParticleCanvas
+          particleColor="100, 160, 220"
+          edgeColor="100, 160, 220"
+          particleAlpha={0.22}
+          edgeAlpha={0.10}
+          speed={1.2}
+          waveAmplitude={1.1}
+          mouseRepulsion={true}
+          repulsionRadius={200}
+          repulsionStrength={24}
+          zIndex={0}
+        />
+      </div>
+      <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.header}>
           <div>
             <span className={styles.sectionNum}>04 — Quality &amp; Compliance</span>

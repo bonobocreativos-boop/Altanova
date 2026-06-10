@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './Company.module.css';
 
 export default function Company() {
@@ -14,6 +15,16 @@ export default function Company() {
               Altanova Pharma Group AG was established as a Swiss specialty pharmaceutical platform — a quality and access layer built for therapeutic franchises in chronic disease care. Our launch franchise addresses a specific gap in European medicine: cannabinoid therapies sit between agricultural supply and pharmaceutical expectations, and the regulated medical channel has lacked a Swiss-quality access layer between the two.
             </p>
           </div>
+        </div>
+
+        <div className={styles.heroImgPlaceholder}>
+          <Image
+            src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781041568/hero-image-01_g2z0ce.png"
+            alt="Altanova Pharma — Swiss specialty pharma facility"
+            fill
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+          />
         </div>
 
         <div className={styles.split}>

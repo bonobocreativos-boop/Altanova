@@ -1,6 +1,7 @@
 .quality {
   padding: var(--section-gap) 0;
   border-bottom: 1px solid var(--hairline);
+  background: var(--white);
 }
 
 .header {
@@ -19,9 +20,10 @@
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--blue-500);
   margin-bottom: 1.5rem;
   display: block;
+  font-weight: 500;
 }
 
 .headline {
@@ -65,9 +67,9 @@
 .blockNum {
   font-size: 0.6875rem;
   letter-spacing: 0.14em;
-  color: var(--muted);
+  color: var(--blue-500);
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .block h3 {
@@ -86,10 +88,12 @@
 }
 
 .block p a {
-  color: var(--ink);
+  color: var(--blue-500);
   text-decoration: underline;
   text-underline-offset: 2px;
+  transition: color var(--t-fast) ease;
 }
+.block p a:hover { color: var(--blue-600); }
 
 .citation {
   font-size: 0.625rem !important;

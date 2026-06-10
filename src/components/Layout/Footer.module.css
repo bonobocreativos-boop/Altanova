@@ -1,6 +1,6 @@
 .footer {
-  background: var(--ink);
-  color: #C0C8D4;
+  background: var(--blue-dark);
+  color: #A8BCCF;
   padding: clamp(56px, 8vw, 96px) 0 2rem;
 }
 
@@ -58,8 +58,8 @@
   color: #8A96AA;
 }
 
-.footAddr a { color: #8A96AA; }
-.footAddr a:hover { color: var(--white); }
+.footAddr a { color: #6A8BAA; }
+.footAddr a:hover { color: var(--blue-200); }
 
 .footCol h4 {
   font-size: 0.625rem;
@@ -81,10 +81,10 @@
 
 .footCol ul a {
   font-size: 0.8125rem;
-  color: #8A96AA;
+  color: #6A8BAA;
   transition: color var(--t-fast) ease;
 }
-.footCol ul a:hover { color: var(--white); }
+.footCol ul a:hover { color: var(--blue-200); }
 
 .compliance {
   font-size: 0.6875rem;

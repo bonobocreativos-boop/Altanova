@@ -22,7 +22,7 @@
 
 .item:first-child { padding-left: 0; }
 .item:last-child { border-right: 0; padding-right: 0; }
-.item:hover { background: var(--off-white); }
+.item:hover { background: var(--ice); }
 
 @media (max-width: 900px) {
   .item:nth-child(2) { border-right: 0; }
@@ -42,8 +42,8 @@
 .ic {
   width: 24px;
   height: 24px;
-  color: var(--ink);
-  opacity: 0.5;
+  color: var(--blue-400);
+  opacity: 0.75;
 }
 
 .item b {
