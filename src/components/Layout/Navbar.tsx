@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Navbar.module.css';
-import logoBlack from '../../../public/Altanova-logo-black.png';
+import logoMain from '../../../public/Altanova-Logo-Main.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -43,34 +44,33 @@ export default function Navbar() {
             <span>IT</span>
           </div>
           <div className={styles.utilRight}>
-            <a href="#medical-education">For Healthcare Professionals</a>
-            <a href="#" title="Investor Relations subdomain available from Series A2">
+            <Link href="/hcp-portal">For Healthcare Professionals</Link>
+            <Link href="/under-construction" title="Investor Relations subdomain available from Series A2">
               <span className={styles.utilPill}>Investor Relations</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
 
       <header className={`${styles.nav} ${scrolled ? styles.scrolled : ''} ${isHidden ? styles.navHidden : ''}`}>
         <div className={`wrap ${styles.navWrap}`}>
-          <a href="#" aria-label="Altanova Pharma">
+          <Link href="/" aria-label="Altanova Pharma">
             <Image
-              src={logoBlack}
+              src={logoMain}
               alt="Altanova Pharma Group AG"
               className={styles.logoImg}
               priority
             />
-          </a>
+          </Link>
 
           <nav aria-label="Primary" className={`${styles.navMenu} ${menuOpen ? styles.navMenuOpen : ''}`}>
             <ul>
-              <li><a href="#company" onClick={() => setMenuOpen(false)}>Company</a></li>
-              <li><a href="#platform" onClick={() => setMenuOpen(false)}>Platform</a></li>
-              <li><a href="#quality" onClick={() => setMenuOpen(false)}>Quality &amp; Compliance</a></li>
-              <li><a href="#partners" onClick={() => setMenuOpen(false)}>Partners</a></li>
-              <li><a href="#medical-education" onClick={() => setMenuOpen(false)}>Medical Education</a></li>
-              <li><a href="#newsroom" onClick={() => setMenuOpen(false)}>Newsroom</a></li>
-              <li><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></li>
+              <li><Link href="/company" onClick={() => setMenuOpen(false)}>Company</Link></li>
+              <li><Link href="/cannexa" onClick={() => setMenuOpen(false)}>Cannexa</Link></li>
+              <li><Link href="/quality-compliance" onClick={() => setMenuOpen(false)}>Quality &amp; Compliance</Link></li>
+              <li><Link href="/education-resources" onClick={() => setMenuOpen(false)}>Education &amp; Resources</Link></li>
+              <li><Link href="/partners" onClick={() => setMenuOpen(false)}>Partners</Link></li>
+              <li><Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
             </ul>
           </nav>
 

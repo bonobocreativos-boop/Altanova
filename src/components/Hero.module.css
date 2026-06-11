@@ -1,12 +1,11 @@
 .hero {
   position: relative;
   overflow: hidden;
-  margin-top: -104px;
-  min-height: calc(80vh + 104px);
+  min-height: 75vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: calc(104px + clamp(28px, 3vw, 48px)) 0 clamp(64px, 7vw, 100px);
+  padding: calc(104px + clamp(6px, 1.5vw, 20px)) 0 clamp(30px, 3.5vw, 50px);
 }
 
 .heroVideo {
@@ -38,7 +37,7 @@
 
 @media (min-width: 901px) {
   .hero {
-    min-height: calc(100vh + 104px);
+    min-height: 100vh;
   }
 }
 

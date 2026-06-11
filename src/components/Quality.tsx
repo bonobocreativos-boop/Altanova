@@ -1,40 +1,17 @@
 import styles from './Quality.module.css';
-import ParticleCanvas from './ParticleCanvas';
 
 export default function Quality() {
   return (
     <section className={styles.quality} id="quality" style={{ position: 'relative', overflow: 'hidden' }}>
-      {/* Perspective wrapper — oversized so tilt still covers the full section */}
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        transformOrigin: '50% 50%',
-        transform: 'perspective(900px) rotateX(22deg) rotateY(-4deg) scale(1.7)',
-        pointerEvents: 'none',
-        zIndex: 0,
-      }}>
-        <ParticleCanvas
-          particleColor="100, 160, 220"
-          edgeColor="100, 160, 220"
-          particleAlpha={0.22}
-          edgeAlpha={0.10}
-          speed={1.2}
-          waveAmplitude={1.1}
-          mouseRepulsion={true}
-          repulsionRadius={200}
-          repulsionStrength={24}
-          zIndex={0}
-        />
-      </div>
       <div className="wrap" style={{ position: 'relative', zIndex: 1 }}>
         <div className={styles.header}>
-          <div>
-            <span className={styles.sectionNum}>04 — Quality &amp; Compliance</span>
+          <div className={styles.headerLeft}>
+            <span className={styles.sectionNum}>Quality &amp; Compliance</span>
             <h2 className={styles.headline}>Compliance is the operating system, not a department.</h2>
           </div>
           <div className={styles.headerRight}>
             <p>
-              Three regulatory blocks anchor Altanova's public Quality &amp; Compliance posture. Each is published on this site, with a primary-source citation, and is supported by the corresponding policy PDF in the Resources section.
+              Three regulatory blocks anchor Altanova's public Quality &amp; Compliance posture. Each is published on this site, with a primary-source citation outlining our institutional framework.
             </p>
           </div>
         </div>
@@ -55,7 +32,7 @@ export default function Quality() {
           <article className={styles.block}>
             <span className={styles.blockNum}>Block 3 · Pharmacovigilance</span>
             <h3>ElViS-aligned reporting.</h3>
-            <p>Healthcare professionals and patients are asked to report any suspected adverse reactions to Altanova at <a href="mailto:pharmacovigilance@altanovapharma.ch">pharmacovigilance@altanovapharma.ch</a>, or directly to Swissmedic through the ElViS electronic vigilance system. Social-media channels are not a forum for adverse-event reporting.</p>
+            <p>Healthcare professionals and patients are asked to report any suspected adverse reactions to Altanova at <a href="mailto:mkapp@altanovapharma.com">mkapp@altanovapharma.com</a>, or directly to Swissmedic through the ElViS electronic vigilance system. Social-media channels are not a forum for adverse-event reporting.</p>
             <p className={styles.citation}>Citation: Art. 59 HMG · Swissmedic ElViS</p>
           </article>
         </div>

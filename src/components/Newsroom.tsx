@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Newsroom.module.css';
 
 export default function Newsroom() {
@@ -26,7 +27,7 @@ export default function Newsroom() {
             <div className={styles.meta}>Press release · 21 May 2026</div>
             <h3>Altanova Pharma Group AG announces Seed close and Swissmedic establishment-licence application.</h3>
             <p>Altanova Pharma Group AG today announced the close of its CHF 2.5 million Seed financing led by PG Equity Group and MWP Family Office, and the lodging of its Swissmedic establishment-licence application.</p>
-            <a href="#">Read the release →</a>
+            <Link href="/under-construction">Read the release →</Link>
           </article>
           <article className={styles.article}>
             {/* Image placeholder — upload to Cloudinary and replace */}
@@ -37,7 +38,7 @@ export default function Newsroom() {
             <div className={styles.meta}>Publication notice · 12 May 2026</div>
             <h3>Updated AHRQ systematic review on cannabis-based products for chronic pain: implications for Swiss prescribers.</h3>
             <p>Educational summary prepared for Swiss healthcare professionals; accessible inside the Altanova Medical Academy upon HCP-confirmation.</p>
-            <a href="#">Open in HCP area →</a>
+            <Link href="/hcp-portal">Open in HCP area →</Link>
           </article>
           <article className={styles.article}>
             {/* Image placeholder — upload to Cloudinary and replace */}
@@ -48,7 +49,7 @@ export default function Newsroom() {
             <div className={styles.meta}>Regulatory watch · 02 May 2026</div>
             <h3>Quarterly regulatory summary — Switzerland, Germany, EU. April 2026.</h3>
             <p>Concise overview of Swissmedic, BfArM and EMA actions affecting cannabinoid medicines, prepared for partners, importers and HCPs.</p>
-            <a href="#">Download summary →</a>
+            <Link href="/under-construction">Download summary →</Link>
           </article>
         </div>
       </div>

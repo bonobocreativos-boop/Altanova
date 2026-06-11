@@ -1,6 +1,7 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Footer.module.css';
-import logoWhite from '../../../public/Altanova-logo-white.png';
+import logoWhite from '../../../public/Altanova Vector Logo-white.png';
 
 export default function Footer() {
   return (
@@ -8,13 +9,13 @@ export default function Footer() {
       <div className="wrap">
         <div className={styles.footGrid}>
           <div className={styles.footBrand}>
-            <a href="#" aria-label="Altanova Pharma">
+            <Link href="/" aria-label="Altanova Pharma">
               <Image
                 src={logoWhite}
                 alt="Altanova Pharma Group AG"
                 className={styles.logoImg}
               />
-            </a>
+            </Link>
             <p className={styles.brandTagline}>
               Swiss Precision<span className={styles.dot}>·</span>Scientific Integrity<span className={styles.dot}>·</span>Patient Impact
             </p>
@@ -23,46 +24,46 @@ export default function Footer() {
               Rigistrasse 3<br />
               6300 Zug<br />
               Switzerland<br />
-              <a href="mailto:corporate@altanovapharma.ch">corporate@altanovapharma.ch</a>
+              <a href="mailto:mkapp@altanovapharma.com">mkapp@altanovapharma.com</a>
             </p>
           </div>
 
           <div className={styles.footCol}>
             <h4>Company</h4>
             <ul>
-              <li><a href="#company">About</a></li>
-              <li><a href="#leadership">Leadership</a></li>
-              <li><a href="#governance">Governance</a></li>
-              <li><a href="#careers">Careers</a></li>
+              <li><Link href="/company">About</Link></li>
+              <li><Link href="/company#leadership">Leadership</Link></li>
+              <li><Link href="/company#governance">Governance</Link></li>
+              <li><Link href="/company#careers">Careers</Link></li>
             </ul>
           </div>
           <div className={styles.footCol}>
             <h4>Platform</h4>
             <ul>
-              <li><a href="#platform">Overview</a></li>
-              <li><a href="#quality">Quality &amp; Compliance</a></li>
-              <li><a href="#partners">Supply chain</a></li>
-              <li><a href="#platform">AI-enabled operations</a></li>
+              <li><Link href="/">Overview</Link></li>
+              <li><Link href="/quality-compliance">Quality &amp; Compliance</Link></li>
+              <li><Link href="/partners">Supply chain</Link></li>
+              <li><Link href="/">AI-enabled operations</Link></li>
             </ul>
           </div>
           <div className={styles.footCol}>
             <h4>Resources</h4>
             <ul>
-              <li><a href="#newsroom">Newsroom</a></li>
-              <li><a href="#medical-education">Medical Education</a></li>
-              <li><a href="#">Sustainability Policy (PDF)</a></li>
-              <li><a href="#">Code of Conduct (PDF)</a></li>
+              <li><Link href="/under-construction">News &amp; Updates</Link></li>
+              <li><Link href="/education-resources">Education &amp; Resources</Link></li>
+              <li><Link href="/under-construction">Sustainability Policy (PDF)</Link></li>
+              <li><Link href="/under-construction">Code of Conduct (PDF)</Link></li>
             </ul>
           </div>
           <div className={styles.footCol}>
             <h4>Legal</h4>
             <ul>
-              <li><a href="#">Imprint / Impressum</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Cookie Policy</a></li>
-              <li><a href="#">Terms of Use</a></li>
-              <li><a href="#">Adverse Event Reporting</a></li>
-              <li><a href="#">Whistleblower channel</a></li>
+              <li><Link href="/under-construction">Imprint / Impressum</Link></li>
+              <li><Link href="/under-construction">Privacy Policy</Link></li>
+              <li><Link href="/under-construction">Cookie Policy</Link></li>
+              <li><Link href="/under-construction">Terms of Use</Link></li>
+              <li><Link href="/under-construction">Adverse Event Reporting</Link></li>
+              <li><Link href="/under-construction">Whistleblower channel</Link></li>
             </ul>
           </div>
         </div>

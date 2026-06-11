@@ -1,93 +1,155 @@
-.hcp {
-  padding: var(--section-gap) 0;
-  border-bottom: 1px solid var(--hairline);
+.splitSection {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  background: var(--white);
 }
 
-.hcpGrid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 6rem;
-  align-items: start;
+@media (max-width: 900px) {
+  .splitSection {
+    flex-direction: column;
+    min-height: auto;
+    overflow: visible;
+  }
 }
 
-@media (max-width: 1000px) { .hcpGrid { grid-template-columns: 1fr; gap: 3rem; } }
-
-.sectionNum {
-  font-size: 0.6875rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--blue-500);
-  margin-bottom: 1.5rem;
-  display: block;
-  font-weight: 500;
+.column {
+  width: 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(104px + 2rem) clamp(1.5rem, 4vw, 3rem) 2rem clamp(1.5rem, 4vw, 3rem);
 }
 
-.headline {
-  font-size: clamp(1.75rem, 3vw, 3.25rem);
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 2rem;
+@media (max-width: 900px) {
+  .column {
+    width: 100%;
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
 }
 
-.hcpMain p {
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--charcoal);
-  max-width: 52ch;
-  margin-bottom: 1rem;
+.columnBg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  transition: transform var(--t-slow) var(--ease-out), filter var(--t-med) ease;
 }
 
-.hcpAside {
-  border: 1px solid var(--hairline);
-  padding: 2.5rem;
-  background: var(--ice);
-  border-radius: 12px;
+.hcpColumn .columnBg {
+  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781147836/Altanova-Hero-Image-10_hizslq.png');
 }
 
-.asideLabel {
+.patientColumn .columnBg {
+  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781147831/Altanova-Hero-Image-09_mptdkw.png');
+}
+
+@media (min-width: 901px) {
+  .column:hover .columnBg {
+    transform: scale(1.03);
+    filter: blur(4px);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.10) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  
+  /* Glassmorphism — deep frost */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(40px) saturate(140%);
+  -webkit-backdrop-filter: blur(40px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 12px 48px rgba(10, 41, 82, 0.08), inset 0 1px 0 #fff;
+
+  display: flex;
+  flex-direction: column;
+
+  /* Transition for hover effect */
+  transition: opacity var(--t-med) var(--ease-out), transform var(--t-med) var(--ease-out);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.column:hover .card,
+.column:active .card {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .card {
+    max-height: none;
+    padding: 2.5rem 1.75rem;
+  }
+}
+
+/* Scrollbar styling for card internal scroll */
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+.card::-webkit-scrollbar-track {
+  background: transparent;
+}
+.card::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+.card::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.tag {
   font-size: 0.625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 1.5rem;
+  color: var(--blue-500);
+  margin-bottom: 1rem;
   display: block;
+  font-weight: 600;
 }
 
-.hcpList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+.title {
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
 }
 
-.hcpList li {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  font-size: 0.875rem;
+.desc {
+  font-size: 0.9rem;
+  line-height: 1.65;
   color: var(--charcoal);
-  line-height: 1.6;
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.hcpList li:last-child { border-bottom: 0; }
-
-.bullet {
-  color: var(--blue-400);
-  font-size: 0.5rem;
-  margin-top: 6px;
-  flex-shrink: 0;
-}
-
-.disclaimer {
-  margin-top: 1.5rem;
-  font-size: 0.6875rem;
-  color: var(--muted);
-  line-height: 1.55;
+  margin-bottom: 1.25rem;
 }
 
 /* Modal */

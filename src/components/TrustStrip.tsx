@@ -3,6 +3,7 @@ import styles from './TrustStrip.module.css';
 export default function TrustStrip() {
   return (
     <section className={styles.trust} aria-label="Regulatory framework">
+      <div className={styles.trustBg} aria-hidden="true" />
       <div className={`wrap ${styles.trustGrid}`}>
         <div className={styles.item}>
           <svg className={styles.ic} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25">

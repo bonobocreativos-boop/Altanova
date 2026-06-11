@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useEffect } from 'react';
+import Link from 'next/link';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -32,16 +33,16 @@ export default function Hero() {
         <span className={styles.heroLabel}>Swiss specialty pharma — Zug, Switzerland</span>
 
         <h1 className={styles.heroHeadline}>
-          Swiss specialty pharma.<br />Life-changing therapies for chronic disease states.
+          Bringing life-changing therapies to patients with chronic disease states
         </h1>
 
         <p className={styles.heroCopy}>
-          Altanova Pharma Group AG is a Swiss specialty pharmaceutical platform building the regulated access layer for specialty therapies. We work to Swissmedic and EU-GMP standards across Switzerland and selected European markets.
+          Altanova Pharma Group AG is a Swiss-led specialty pharma platform focused on compliant sourcing, pharmaceutical-quality standards and medical-channel access across Switzerland and selected European markets.
         </p>
 
         <div className={styles.heroActions}>
-          <a className="btn btn-primary" href="#contact">Partnership inquiries <span className="arrow">→</span></a>
-          <a className="btn btn-outline" href="#quality">Quality &amp; Compliance framework <span className="arrow">→</span></a>
+          <Link className="btn btn-primary" href="/contact">Partnership inquiries <span className="arrow">→</span></Link>
+          <Link className="btn btn-outline" href="/quality-compliance">Quality &amp; Compliance framework <span className="arrow">→</span></Link>
         </div>
       </div>
     </section>

@@ -1,8 +1,39 @@
 .quality {
-  padding: var(--section-gap) 0;
+  padding: calc(104px + var(--section-gap)) 0 var(--section-gap) 0;
   border-bottom: 1px solid var(--hairline);
-  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  background: var(--off-white);
 }
+
+/* Altanova Quality Background */
+.quality::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781145651/Altanova-Hero-Image-03_zvj4ge.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85;
+  z-index: 0;
+}
+
+/* Off-white gradient overlay for text contrast and blending */
+.quality::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 247, 250, 0.88) 0%,
+    rgba(245, 247, 250, 0.60) 50%,
+    rgba(245, 247, 250, 0.92) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.quality > * { position: relative; z-index: 1; }
 
 .header {
   display: grid;
@@ -15,6 +46,8 @@
 }
 
 @media (max-width: 900px) { .header { grid-template-columns: 1fr; gap: 2rem; } }
+
+.headerLeft { display: flex; flex-direction: column; }
 
 .sectionNum {
   font-size: 0.6875rem;
@@ -41,28 +74,54 @@
   max-width: 58ch;
 }
 
+/* Glass compliance blocks */
 .blocks {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 @media (max-width: 900px) { .blocks { grid-template-columns: 1fr; } }
 
 .block {
-  padding: 0 2rem;
-  border-right: 1px solid var(--hairline);
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  /* Glass morphism — deep frost */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(10, 41, 82, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 1px 0 1px rgba(255, 255, 255, 0.4);
+
+  transition: transform var(--t-med) var(--ease-out),
+              box-shadow var(--t-med) ease,
+              border-color var(--t-med) ease,
+              background var(--t-med) ease;
 }
 
-.block:first-child { padding-left: 0; }
-.block:last-child { border-right: 0; padding-right: 0; }
-
-@media (max-width: 900px) {
-  .block { padding: 2rem 0; border-right: none; border-bottom: 1px solid var(--hairline); }
-  .block:last-child { border-bottom: 0; }
+.block:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 48px rgba(30, 70, 140, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.9), inset 1px 0 1px rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
 }
+
+/* Accent top line per block */
+.block::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-400), var(--blue-200));
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+  transition: width var(--t-med) ease;
+}
+.block:hover::before { width: 56px; }
 
 .blockNum {
   font-size: 0.6875rem;
