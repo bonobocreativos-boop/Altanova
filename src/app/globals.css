@@ -290,3 +290,16 @@ p { max-width: 60ch; line-height: 1.7; }
     display: none;
   }
 }
+
+/* ── Google Translate Clean Integration ── */
+.goog-te-banner-frame,
+.goog-te-banner,
+.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+  position: static !important;
+}
