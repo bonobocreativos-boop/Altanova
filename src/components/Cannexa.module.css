@@ -15,7 +15,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781152625/Cannexa-Hero-Image-04_xorlmx.png');
+  background-image: url('https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310025/Cannexa-Hero-Image-01_ang8hj.png');
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -58,7 +58,7 @@
 .proofIcon {
   width: 24px;
   height: 24px;
-  color: #184f3c; /* Dark Green */
+  color: #48CCB9; /* Accent Green */
   flex-shrink: 0;
   margin-top: 0.2rem;
 }
@@ -68,7 +68,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #184f3c;
+  color: #153D5B; /* Primary Blue */
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -84,7 +84,7 @@
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #184f3c;
+  color: #4698C1; /* Subtexts Color */
   display: block;
   margin-bottom: 1.5rem;
   font-weight: 500;
@@ -94,14 +94,14 @@
   font-size: clamp(2rem, 3.5vw, 3rem);
   font-weight: 600;
   line-height: 1.1;
-  color: #184f3c;
+  color: #153D5B; /* Primary Blue */
   max-width: 18ch;
   margin-bottom: 1.5rem;
 }
 
 .introText {
   font-size: 1.125rem;
-  color: #184f3c;
+  color: #153D5B; /* Primary Blue */
   max-width: 600px;
   line-height: 1.6;
 }

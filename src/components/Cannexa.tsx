@@ -9,7 +9,7 @@ export default function Cannexa() {
         <div className="wrap">
           <div className={styles.header}>
             <span className={styles.sectionNum}>Cannexa Franchise</span>
-            <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781154820/Cannexa-Vector-Logo-06_hxc6xp.png" alt="Cannexa Logo" width={280} height={90} style={{ objectFit: 'contain', margin: '1rem 0 2rem' }} priority />
+            <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310025/Cannexa-Logo-01_lh5zxf.png" alt="Cannexa Logo" width={280} height={90} style={{ objectFit: 'contain', margin: '1rem 0 2rem' }} priority />
             <h1 className="visually-hidden" style={{ display: 'none' }}>Cannexa</h1>
             <p className={styles.introText}>
               Cannexa is the cannabinoid-based medical products franchise of Altanova Pharma Group AG, focused on regulated medical-channel access, compliant sourcing and pharmaceutical-quality standards for chronic disease areas where cannabinoid-based therapies may have a role.
@@ -66,7 +66,7 @@ export default function Cannexa() {
                 <span>Management</span>
               </span>
               <div className={styles.diseaseImageContainer}>
-                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156324/Chronic-Disease-Areas-01_syywrd.png" alt="Chronic Pain Management" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
+                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310024/Cannexa-Hero-Image-05_xjxsb0.png" alt="Chronic Pain Management" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
               </div>
             </div>
             <div className={styles.diseaseCard}>
@@ -77,7 +77,7 @@ export default function Cannexa() {
                 <span>Spasticity</span>
               </span>
               <div className={styles.diseaseImageContainer}>
-                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156324/Chronic-Disease-Areas-02_g7mzjs.png" alt="Neurology / MS Spasticity" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
+                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310024/Cannexa-Hero-Image-03_e7jxtr.png" alt="Neurology / MS Spasticity" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
               </div>
             </div>
             <div className={styles.diseaseCard}>
@@ -87,7 +87,7 @@ export default function Cannexa() {
                 <span>Care</span>
               </span>
               <div className={styles.diseaseImageContainer}>
-                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156327/Chronic-Disease-Areas-03_ugduxn.png" alt="Oncology Supportive Care" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
+                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310024/Cannexa-Hero-Image-04_mlmhe1.png" alt="Oncology Supportive Care" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
               </div>
             </div>
             <div className={styles.diseaseCard}>
@@ -96,7 +96,7 @@ export default function Cannexa() {
                 <span>Care</span>
               </span>
               <div className={styles.diseaseImageContainer}>
-                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156324/Chronic-Disease-Areas-04_a7sute.png" alt="Palliative Care" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
+                <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310024/Cannexa-Hero-Image-02_wybwpj.png" alt="Palliative Care" fill className={styles.diseaseImage} style={{ objectFit: 'cover' }} />
               </div>
             </div>
           </div>
@@ -112,12 +112,14 @@ export default function Cannexa() {
             <h2 style={{ fontSize: '1.5rem', marginBottom: '1rem', textTransform: 'uppercase', color: 'var(--ink)' }}>Formulation Portfolio</h2>
             <p style={{ color: 'var(--charcoal)', fontSize: '0.9375rem' }}>
               The Cannexa product range is manufactured under EU-GMP standards and dispensed strictly on medical prescription. Product availability is subject to Swissmedic and cantonal authorisations.
+              <br/><br/>
+              <em>* Note: The product images displayed below are design concepts.</em>
             </p>
 
             <div className={styles.storeGrid}>
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156626/fakeproduct1_rw4oqq.jpg" alt="Cannexa T10:C10" fill style={{ objectFit: 'cover' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310031/Cannexa-Product1_rpsw7g.png" alt="Cannexa T10:C10" fill style={{ objectFit: 'contain' }} />
                 </div>
                 <span className={styles.productTag}>Rx Only</span>
                 <h3 className={styles.productName}>Cannexa T10:C10</h3>
@@ -134,7 +136,7 @@ export default function Cannexa() {
 
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156625/fakeproduct2_pz32xi.jpg" alt="Cannexa C100" fill style={{ objectFit: 'cover' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310032/Cannexa-Product2_gpufzo.png" alt="Cannexa C100" fill style={{ objectFit: 'contain' }} />
                 </div>
                 <span className={styles.productTag}>Rx Only</span>
                 <h3 className={styles.productName}>Cannexa C100</h3>
@@ -151,7 +153,7 @@ export default function Cannexa() {
 
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781156625/fakeproduct3_vxryeg.jpg" alt="Cannexa C50" fill style={{ objectFit: 'cover' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310032/Cannexa-Product2_gpufzo.png" alt="Cannexa C50" fill style={{ objectFit: 'contain' }} />
                 </div>
                 <span className={styles.productTag}>Rx Only</span>
                 <h3 className={styles.productName}>Cannexa C50</h3>
