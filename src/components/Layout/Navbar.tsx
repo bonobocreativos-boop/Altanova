@@ -11,6 +11,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const lastY = useRef(0);
 
+  const [currentLang, setCurrentLang] = useState('EN');
+
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
@@ -30,6 +32,41 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Read the googtrans cookie to determine the current language on client-side mount
+    const getLangFromCookie = () => {
+      const match = document.cookie.match(/googtrans=\/en\/([a-z]{2})/i);
+      if (match && match[1]) {
+        return match[1].toUpperCase();
+      }
+      return 'EN';
+    };
+    setCurrentLang(getLangFromCookie());
+  }, []);
+
+  const changeLanguage = (lang: string) => {
+    const langLower = lang.toLowerCase();
+    
+    if (langLower === 'en') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      const hostname = window.location.hostname;
+      const baseDomain = hostname.split('.').slice(-2).join('.');
+      if (baseDomain && baseDomain.includes('.')) {
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${baseDomain};`;
+      }
+    } else {
+      document.cookie = `googtrans=/en/${langLower}; path=/;`;
+      const hostname = window.location.hostname;
+      const baseDomain = hostname.split('.').slice(-2).join('.');
+      if (baseDomain && baseDomain.includes('.')) {
+        document.cookie = `googtrans=/en/${langLower}; path=/; domain=.${baseDomain};`;
+      }
+    }
+    
+    setCurrentLang(lang);
+    window.location.reload();
+  };
+
   // Always show header when menu is open
   const isHidden = hidden && !menuOpen;
 
@@ -38,10 +75,15 @@ export default function Navbar() {
       <div className={`${styles.utility} ${isHidden ? styles.utilityHidden : ''}`}>
         <div className={`wrap ${styles.utilityInner}`}>
           <div className={styles.lang} aria-label="Language">
-            <span className={styles.active}>EN</span>
-            <span>DE</span>
-            <span>FR</span>
-            <span>IT</span>
+            {['EN', 'DE', 'FR', 'IT'].map((lang) => (
+              <span
+                key={lang}
+                className={currentLang === lang ? styles.active : ''}
+                onClick={() => changeLanguage(lang)}
+              >
+                {lang}
+              </span>
+            ))}
           </div>
           <div className={styles.utilRight}>
             <Link href="/hcp-portal">For Healthcare Professionals</Link>
