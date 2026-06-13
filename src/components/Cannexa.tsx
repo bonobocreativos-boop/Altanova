@@ -9,7 +9,7 @@ export default function Cannexa() {
         <div className="wrap">
           <div className={styles.header}>
             <span className={styles.sectionNum}>Cannexa Franchise</span>
-            <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310025/Cannexa-Logo-01_lh5zxf.png" alt="Cannexa Logo" width={280} height={90} style={{ objectFit: 'contain', margin: '1rem 0 2rem' }} priority />
+            <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781385724/Cannexa-Logo-01_ym0qj5.png" alt="Cannexa Logo" width={280} height={90} style={{ objectFit: 'contain', margin: '1rem 0 2rem' }} priority />
             <h1 className="visually-hidden" style={{ display: 'none' }}>Cannexa</h1>
             <p className={styles.introText}>
               Cannexa is the cannabinoid-based medical products franchise of Altanova Pharma Group AG, focused on regulated medical-channel access, compliant sourcing and pharmaceutical-quality standards for chronic disease areas where cannabinoid-based therapies may have a role.
@@ -119,9 +119,9 @@ export default function Cannexa() {
             <div className={styles.storeGrid}>
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310031/Cannexa-Product1_rpsw7g.png" alt="Cannexa T10:C10" fill style={{ objectFit: 'contain' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781385753/Cannexa-Product1_my7mjs.png" alt="Cannexa T10:C10" fill style={{ objectFit: 'contain' }} />
                 </div>
-                <span className={styles.productTag}>Rx Only</span>
+                <span className={styles.productTag}>This is a product concept</span>
                 <h3 className={styles.productName}>Cannexa T10:C10</h3>
                 <p className={styles.productDesc}>Standardised oral solution. Balanced THC to CBD ratio formulated for consistent dosing.</p>
                 <div className={styles.productSpecs}>
@@ -136,9 +136,9 @@ export default function Cannexa() {
 
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310032/Cannexa-Product2_gpufzo.png" alt="Cannexa C100" fill style={{ objectFit: 'contain' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781385754/Cannexa-Product2_ph3i8w.png" alt="Cannexa C100" fill style={{ objectFit: 'cover' }} />
                 </div>
-                <span className={styles.productTag}>Rx Only</span>
+                <span className={styles.productTag}>This is a product concept</span>
                 <h3 className={styles.productName}>Cannexa C100</h3>
                 <p className={styles.productDesc}>Standardised hard capsules. High CBD profile designed for prolonged clinical effect without psychotropic activity.</p>
                 <div className={styles.productSpecs}>
@@ -153,9 +153,9 @@ export default function Cannexa() {
 
               <article className={styles.productCard}>
                 <div className={styles.productImagePlaceholder}>
-                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781310032/Cannexa-Product2_gpufzo.png" alt="Cannexa C50" fill style={{ objectFit: 'contain' }} />
+                  <Image src="https://res.cloudinary.com/dvm7fjhxs/image/upload/v1781385754/Cannexa-Product3_evljsr.png" alt="Cannexa C50" fill style={{ objectFit: 'cover' }} />
                 </div>
-                <span className={styles.productTag}>Rx Only</span>
+                <span className={styles.productTag}>This is a product concept</span>
                 <h3 className={styles.productName}>Cannexa C50</h3>
                 <p className={styles.productDesc}>Standardised hard capsules. Medium CBD profile for sustained relief.</p>
                 <div className={styles.productSpecs}>
