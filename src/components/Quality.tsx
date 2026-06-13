@@ -32,7 +32,7 @@ export default function Quality() {
           <article className={styles.block}>
             <span className={styles.blockNum}>Block 3 · Pharmacovigilance</span>
             <h3>ElViS-aligned reporting.</h3>
-            <p>Healthcare professionals and patients are asked to report any suspected adverse reactions to Altanova at <a href="mailto:mkapp@altanovapharma.com">mkapp@altanovapharma.com</a>, or directly to Swissmedic through the ElViS electronic vigilance system. Social-media channels are not a forum for adverse-event reporting.</p>
+            <p>Healthcare professionals and patients are asked to report any suspected adverse reactions to Altanova at <a href="mailto:lgomez@altanovapharma.com">lgomez@altanovapharma.com</a>, or directly to Swissmedic through the ElViS electronic vigilance system. Social-media channels are not a forum for adverse-event reporting.</p>
             <p className={styles.citation}>Citation: Art. 59 HMG · Swissmedic ElViS</p>
           </article>
         </div>

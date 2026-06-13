@@ -78,7 +78,7 @@ export default function ContactForm() {
             Altanova responds to qualified inquiries within five Swiss working days. We do not respond to patient-facing medical questions; please consult a treating physician.
           </p>
           <div className={styles.contactInfo}>
-            <div className={styles.contactRow}><b>General Inquiries</b><a href="mailto:mkapp@altanovapharma.com">mkapp@altanovapharma.com</a></div>
+            <div className={styles.contactRow}><b>General Inquiries</b><a href="mailto:lgomez@altanovapharma.com">lgomez@altanovapharma.com</a></div>
             <div className={styles.contactRow}><b>Address</b><span>Altanova Pharma Group AG<br />Rigistrasse 3<br />6300 Zug<br />Switzerland</span></div>
           </div>
         </div>

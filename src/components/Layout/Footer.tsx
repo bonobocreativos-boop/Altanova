@@ -24,7 +24,7 @@ export default function Footer() {
               Rigistrasse 3<br />
               6300 Zug<br />
               Switzerland<br />
-              <a href="mailto:mkapp@altanovapharma.com">mkapp@altanovapharma.com</a>
+              <a href="mailto:lgomez@altanovapharma.com">lgomez@altanovapharma.com</a>
             </p>
           </div>
 
